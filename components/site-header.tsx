@@ -10,14 +10,14 @@ import { Input } from "@/components/ui/input"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-export function SiteHeader() {
+const SiteHeader: React.FC = () => {
   const pathName = usePathname()
 
   if (pathName.startsWith("/studio")) return null
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
+      <div className="mx-auto flex h-16 items-center justify-between space-x-4 px-6 sm:space-x-0">
         <MainNav />
         <form className="hidden items-center lg:inline-flex">
           <Input
@@ -50,3 +50,5 @@ export function SiteHeader() {
     </header>
   )
 }
+
+export default SiteHeader;

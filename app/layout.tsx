@@ -6,8 +6,16 @@ import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Providers } from "@/components/providers"
 import { SiteBlob } from "@/components/site-blob"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
+import SiteFooter from "@/components/site-footer"
+import SiteHeader from "@/components/site-header"
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -24,11 +32,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en" className={roboto.className} suppressHydrationWarning>
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "min-h-screen bg-background font-sans antialiased text-roboto",
             fontSans.variable
           )}
         >

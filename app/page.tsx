@@ -1,22 +1,16 @@
-import { client } from "@/sanity/lib/client"
-import { groq } from "next-sanity"
-
-import { SanityProduct } from "@/config/inventory"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { ProductFilters } from "@/components/product-filters"
-import { ProductGrid } from "@/components/product-grid"
-import { ProductSort } from "@/components/product-sort"
-import { seedSanityData } from "@/lib/seed"
+import Banner from "@/components/banner"
 
 interface Props { }
 
 export default function Page() {
   return (
       <div>
-        <main className="mx-auto max-w-6xl px-6">
-          <section>
-            <div>Home page works</div>
+        <main className="max-w-full px-2 md:px-4 lg:px-6">
+        <section>
+          <Banner imgSrc="https://images.unsplash.com/photo-1682685797886-79020b7462a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" title="Photography" linkHref="/destinationPage" alt="rocky mountains"/>
+        </section>
+        <section className="mt-2">
+          <Banner imgSrc="https://storage.googleapis.com/photo-portfolio/heart.jpeg" title="Blogs" linkHref="/destinationPage" alt="rocky mountains"/>
           </section>
         </main>
       </div>

@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 
-export function SiteFooter() {
+const SiteFooter: React.FC = () => {
   return (
     <footer className="border-t">
       <div className="mx-auto max-w-7xl overflow-hidden p-2 lg:px-8">
@@ -20,7 +20,7 @@ export function SiteFooter() {
         </nav>
         <Link
           href="https://www.fullstack.so"
-          className="mt-10 block text-center text-xs leading-5"
+          className="mt-2 block text-center text-xs leading-5"
         >
           &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
           reserved.
@@ -29,3 +29,5 @@ export function SiteFooter() {
     </footer>
   )
 }
+
+export default SiteFooter

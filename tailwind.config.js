@@ -71,6 +71,9 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    fontFamily: {
+      'roboto': ['Roboto', 'sans'],
+    },
   },
   plugins: [require("tailwindcss-animate")],
 }
