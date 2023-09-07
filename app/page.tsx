@@ -4,7 +4,8 @@ interface Props { }
 
 export default function Page() {
   return (
-      <div>
+    <div>
+
         <main className="max-w-full px-2 md:px-4 lg:px-6">
         <section>
           <Banner imgSrc="https://storage.googleapis.com/photo-portfolio/c-d-x-5qT09yIbROk-unsplash.jpg" title="Photography" linkHref="/photography" alt="camera"/>
