@@ -75,5 +75,5 @@ module.exports = {
       'roboto': ['Roboto', 'sans'],
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate", "@tailwindcss/aspect-ratio")],
 }

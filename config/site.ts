@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Pashakachi",
+  name: "Pashakachi Studio",
   description: "Resty Iral's stunning photography prints. High-quality, captivating moments captured to adorn your space",
   footer: [
     { name: "About", href: "#" },

@@ -18,8 +18,8 @@ const Banner: React.FC<BannerProps> = ({ imgSrc, title, linkHref, alt }) => {
           src={imgSrc}
           alt={title}
           quality={100}
-          width={1848}
-          height={728}
+          width={1080}
+          height={720}
           className="absolute inset-0 object-cover w-full h-full"
         />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 rounded-md font-bold text-center text-white text-sm md:text-lg">
