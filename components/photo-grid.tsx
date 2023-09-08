@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Photo from "@/components/photo";
-import { Lightbox } from "react-modal-image";
+import PhotoCarousel from "@/components/photo-carousel";
 
 interface PhotoProps {
   imgSrc: string;
@@ -17,12 +17,10 @@ interface PhotoGridProps {
 
 const PhotoGrid: React.FC<PhotoGridProps> = ({ photos }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState("");
-  const [currentAlt, setCurrentAlt] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const openLightbox = (imgSrc: string, alt?: string) => {
-    setCurrentImage(imgSrc);
-    setCurrentAlt(alt || "");
+  const openLightbox = (index: number) => {
+    setCurrentSlide(index);
     setIsOpen(true);
   };
 
@@ -38,27 +36,25 @@ const PhotoGrid: React.FC<PhotoGridProps> = ({ photos }) => {
             key={index}
             imgSrc={photo.imgSrc}
             alt={photo.alt}
-            linkHref={photo.linkHref}
             title={photo.title}
-            onOpen={() => openLightbox(photo.imgSrc, photo.alt)}
+            onOpen={() => openLightbox(index)}
           />
         ))}
       </div>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-
-          <Lightbox
-            //@ts-ignore
-            medium={currentImage}
-            large={currentImage}
-            alt={currentAlt}
-            hideDownload={true}
-            onClose={closeLightbox}
-          />
-        </div>
+        <PhotoCarousel
+          photos={photos}
+          initialSlideIndex={currentSlide}
+          onClose={closeLightbox}
+        />
       )}
     </div>
   );
 }
 
 export default PhotoGrid;
+
+
+
+
+

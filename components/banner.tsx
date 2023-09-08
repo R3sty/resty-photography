@@ -13,7 +13,7 @@ interface BannerProps {
 const Banner: React.FC<BannerProps> = ({ imgSrc, title, linkHref, alt }) => {
   return (
     <Link href={linkHref}>
-      <div className="relative overflow-hidden md:h-[75vh] h-[25vh]">
+      <div className="relative overflow-hidden md:h-[75vh] h-[25vh] hover:opacity-75">
         <Image
           src={imgSrc}
           alt={title}
