@@ -9,6 +9,8 @@ interface PhotoProps {
   alt?: string;
   linkHref?: string;
   title: string;
+  width?: number;
+  height?: number;
 }
 
 interface PhotoCarouselProps {
@@ -42,20 +44,22 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos, initialSlideIndex
           infiniteLoop={true}
           showArrows={true}
         >
-          {photos.map((photo: PhotoProps, index: number) => (
-            <div key={index} className="relative flex items-center justify-center max-h-[720px] w-auto mb-10">
-              <Image
-                src={photo.imgSrc}
-                alt={photo.alt || ""}
-                width={1080}
-                height={720}
-                quality={100}
-                />
-              <p className="absolute bottom-0 text-white text-sm md:text-lg py-1 px-2">
-                {photo.title}
-              </p>
-            </div>
-          ))}
+        {photos.map((photo: PhotoProps, index: number) => (
+    <div key={index} className="relative flex items-center justify-center mb-10 max-h-[720px]">
+    <Image
+      src={photo.imgSrc}
+      alt={photo.alt || ""}
+      width={1080}
+      height={720}
+      quality={100}
+      // style={{ objectFit: "contain" }}
+    />
+    <p className="absolute bottom-0 text-white text-sm md:text-lg py-1 px-2">
+      {photo.title}
+    </p>
+  </div>
+))}
+
         </Carousel>
       </div>
     </div>
