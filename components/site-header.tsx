@@ -27,7 +27,6 @@ const SiteHeader: React.FC = () => {
       setScrollDir(scrollY > lastScrollY ? "down" : "up");
       lastScrollY = scrollY;
     };
-
     window.addEventListener("scroll", updateScrollDir);
 
     return () => window.removeEventListener("scroll", updateScrollDir);
