@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { urlForImage } from "@/sanity/lib/image"
+import { urlForImage } from "@/app/sanity/lib/image"
 import { XCircle } from "lucide-react"
 import { formatCurrencyString } from "use-shopping-cart"
 

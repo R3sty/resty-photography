@@ -4,7 +4,7 @@ import { groq } from 'next-sanity';
 import { useState, useEffect } from "react";
 import PortableText from "react-portable-text";
 import Image from 'next/image';
-import { client } from "@/sanity/lib/client";
+import { client } from "@/app/sanity/lib/client";
 import { PortableTextBlock } from "sanity";
 
 type BlogPostType = {
