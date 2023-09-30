@@ -42,7 +42,42 @@ export const blogPost = {
       name: "content",
       title: "Content",
       type: "array",
-      of: [{ type: "block" }]
+      of: [
+        {
+          type: "block",
+          // Optional: This allows you to set some options for the rich text editor
+          styles: [],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'URL',
+                fields: [
+                  {
+                    title: 'URL',
+                    name: 'href',
+                    type: 'url'
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description: "Describe the image for those who can't see it"
+            }
+          ]
+        }
+      ]
     },
     {
       name: "excerpt",
