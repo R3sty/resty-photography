@@ -36,26 +36,26 @@ const SiteHeader: React.FC = () => {
   if (pathName.startsWith("/studio")) return null;
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full border-b bg-background transform transition-transform duration-300 ${scrollDir === "down" ? "-translate-y-full" : "translate-y-0"
-        }`}
-    >
-      <div className="mx-auto flex h-20 items-center justify-between space-x-4 px-6 sm:space-x-0">
+    <header className={`sticky top-0 z-40 w-full border-b bg-background transform transition-transform duration-300 ${scrollDir === "down" ? "-translate-y-full" : "translate-y-0"}`}>
+      <div className="mx-auto flex h-16 items-center px-6 justify-between">
         <MainNav />
-        <div className="flex items-center space-x-1">
-          <Link href="/blog" className="hover:text-blue-800 mr-10">Blog
-          </Link>
-          <Link href="/web-dev" className="hover:text-blue-800 mr-10">
-          Web dev
-          </Link>
-          <ThemeToggle />
-          {process.env.NODE_ENV === "development" && (
-            <Link href="/studio">
-              <Button size="sm" variant="ghost">
-                <Edit className="h-5 w-5" />
-              </Button>
-            </Link>
-          )}
+        <div className="flex items-center">
+          <div className="flex">
+            <Link href="/blog" className="hover:text-blue-800 mr-10">Blog</Link>
+            <Link href="/projects" className="hover:text-blue-800 mr-10">Web dev</Link>
+            <Link href="/store" className="hover:text-blue-800 mr-10">Store</Link>
+            <Link href="/contact" className="hover:text-blue-800 mr-10">Contact me</Link>
+          </div>
+          <div className="flex items-center space-x-1">
+            <ThemeToggle />
+            {process.env.NODE_ENV === "development" && (
+              <Link href="/studio">
+                <Button size="sm" variant="ghost">
+                  <Edit className="h-5 w-5" />
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </header>
