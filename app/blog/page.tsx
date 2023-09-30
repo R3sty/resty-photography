@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { groq } from "next-sanity";
-import { client } from "@/app/sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 
 type BlogPostType = {
   title: string;
