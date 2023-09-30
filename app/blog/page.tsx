@@ -2,15 +2,31 @@
 
 import { useEffect, useState } from "react";
 import { NextSeo } from 'next-seo';
+import Image from "next/image";
+
 import { client } from "@/sanity/lib/client";
 import ReactMarkdown from 'react-markdown';
+
+type BlogPostData = {
+  title: string;
+  publishedAt: string;
+  author: string;
+  thumbnail: {
+    asset: {
+      url: string;
+    };
+    alt: string;
+  };
+  content: string;
+  excerpt: string;
+};
 
 type BlogPostProps = {
   slug: string | undefined;
 };
 
 const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<BlogPostData | null>(null);
 
   useEffect(() => {
     async function fetchPostData() {
@@ -45,14 +61,21 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
         <span className="text-gray-600 mx-2">|</span>
         <span className="text-gray-600">By {post.author}</span>
       </div>
-      <img src={post.thumbnail.asset.url} alt={post.thumbnail.alt} className="w-full h-auto mb-6 rounded-md shadow-md" />
+      <div className="relative w-full h-[300px] mb-6 rounded-md shadow-md overflow-hidden"> {/* Adjust the height as per your needs */}
+      <Image
+        src={post.thumbnail.asset.url}
+        alt={post.thumbnail.alt}
+        layout="fill"
+        objectFit="cover"
+      />
+    </div>
       <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
       <p className="mt-6 text-gray-600">{post.excerpt}</p>
     </div>
   );
 }
 
-async function getPostData(slug: string | undefined) {
+async function getPostData(slug: string | undefined): Promise<BlogPostData> {
   return await client.fetch(`*[_type == "blogPost" && slug.current == "${slug}"][0]{
     title,
     publishedAt,
