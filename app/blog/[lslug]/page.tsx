@@ -20,29 +20,7 @@ type BlogPostType = {
   content: PortableTextBlock[];
 };
 
-const getBlogPost = async (slug: string): Promise<BlogPostType> => {
-  return client.fetch(
-    groq`*[_type == "blogPost" && slug.current == $slug][0]{
-      title,
-      publishedAt,
-      author,
-      "thumbnail": {
-        "asset": {
-          "url": thumbnail.asset->url
-        },
-        "alt": thumbnail.alt
-      },
-      "slug": slug.current,
-      "content": content[]{
-        ...,
-        "asset": asset->{
-          "url": url
-        }
-      }
-    }`,
-    { slug }
-  );
-};
+
 
 type Props = {
   params: {

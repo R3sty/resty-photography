@@ -1,63 +1,47 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from "next/image";
-import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import * as blogData from "lib/blog-data"
-
+import { client } from "@/sanity/lib/client";
+import { GetStaticProps } from 'next'
 //components
 import BlogHeader from "@/components/blog-header";
 import BlogLayout from "@/components/blog-layout";
 import BlogContainer from "@/components/blog-container";
+import HeroPost from "@/components/blog-hero-post";
+import { BlogPostType, getBlogPost } from "@/sanity/lib/queries";
 
-type BlogPostType = {
-  title: string;
-  slug: string;
-  publishedAt: string;
-  excerpt: string;
-  thumbnail: {
-    asset: string;
-    alt?: string;
-  };
-};
-
-const getBlogPosts = async (): Promise<BlogPostType[]> => {
-  return client.fetch(
-    groq`*[_type == "blogPost"]{
-      title,
-      "slug": slug.current,
-      publishedAt,
-      excerpt,
-      "thumbnail": {
-        "asset": thumbnail.asset->url,
-        "alt": thumbnail.alt
-      }
-    }`
-  );
+export type PageProps = {
+  preview?: boolean
+  loading?: boolean
+  posts: BlogPostType[]
+  //settings: Settings
 }
 
-const Blogs: React.FC = () => {
-  const [posts, setPosts] = useState<BlogPostType[]>([]);
+const Blogs: React.FC<PageProps> = (props) => {
+  const { preview, loading, posts } = props
+  const [heroPost, ...morePosts] = posts || []
 
-  useEffect(() => {
-    const fetchBlogPosts = async () => {
-      const data = await getBlogPosts();
-      setPosts(data);
-    };
-
-    fetchBlogPosts();
-  }, []);
+  console.log("Posts--->", posts);
+  console.log("Hero Post--->", heroPost);
 
   return (
     <>
       <BlogLayout>
         <BlogContainer>
-      <BlogHeader title={blogData.title} description={blogData.description} level={1} />
-      </BlogContainer>
+          <BlogHeader title={blogData.title} description={blogData.description} level={1} />
+        </BlogContainer>
+        {heroPost && (
+        <HeroPost
+          title={heroPost.title}
+          thumbnail={heroPost.thumbnail}
+          publishedAt={heroPost.publishedAt}
+          author={heroPost.author}
+          slug={heroPost.slug}
+        />
+      )}
       </BlogLayout>
     </>
+
     //       <div className="max-w-4xl mx-auto p-6">
     //   <h1 className="text-4xl font-semibold mb-4">Blogs</h1>
     //   {posts.map((post) => (
@@ -86,5 +70,6 @@ const Blogs: React.FC = () => {
     // </div>
   );
 }
-
 export default Blogs;
+
+
