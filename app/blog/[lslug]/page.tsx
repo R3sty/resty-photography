@@ -55,8 +55,6 @@ const BlogPost: React.FC<Props> = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  console.log('BlogPost params --->', params);
-
   useEffect(() => {
     async function fetchBlogPost() {
       try {
