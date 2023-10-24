@@ -11,7 +11,7 @@ type CoverImageProps = {
 };
 
 const CoverImage: React.FC<CoverImageProps> = ({ title, slug, image: source, priority }) => {
-  const image = source?.asset?._ref ? (
+  const image = source?.asset?.url ? (
     <div
       className={cn('shadow-small', {
         'transition-shadow duration-200 hover:shadow-medium': slug,

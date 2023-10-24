@@ -1,10 +1,9 @@
 "use client";
 
-import { groq } from 'next-sanity';
 import { useState, useEffect } from "react";
 import PortableText from "react-portable-text";
 import Image from 'next/image';
-import { client } from "@/sanity/lib/client";
+import { getBlogPost } from "@/sanity/lib/queries";
 import { PortableTextBlock } from "sanity";
 
 type BlogPostType = {
@@ -19,8 +18,6 @@ type BlogPostType = {
   };
   content: PortableTextBlock[];
 };
-
-
 
 type Props = {
   params: {
@@ -38,6 +35,7 @@ const BlogPost: React.FC<Props> = ({ params }) => {
       try {
         const data = await getBlogPost(params.lslug);
         setBlogPost(data);
+        console.log("blog post data:", blogPost)
       } catch (err) {
         setError("Failed to fetch blog post.");
       } finally {
@@ -46,6 +44,7 @@ const BlogPost: React.FC<Props> = ({ params }) => {
     }
     fetchBlogPost();
   }, [params.lslug]);
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

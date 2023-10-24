@@ -18,7 +18,7 @@ export type BlogPostType = {
 };
 
 export const getBlogPost = async (slug: string): Promise<BlogPostType> => {
-  return client.fetch(
+  const blogPost = client.fetch(
     groq`*[_type == "blogPost" && slug.current == $slug][0]{
       title,
       publishedAt,
@@ -39,6 +39,8 @@ export const getBlogPost = async (slug: string): Promise<BlogPostType> => {
     }`,
     { slug }
   );
+console.log("Blog post from Sanity:", blogPost)
+  return blogPost;
 };
 
 

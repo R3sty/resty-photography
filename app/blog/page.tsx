@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import * as blogData from "lib/blog-data"
-import { client } from "@/sanity/lib/client";
 
 //components
 import BlogHeader from "@/components/blog-header";
@@ -38,15 +37,16 @@ const Blogs: React.FC<PageProps> = (props) => {
     fetchData();
   }, []);
 
+  console.log("Blog data:", dataPosts)
+
+
   if (loading) {
     return <div>Loading...</div>
   }
   return (
     <>
       <BlogLayout>
-        <BlogContainer>
           <BlogHeader title={blogData.title} description={blogData.description} level={1} />
-        </BlogContainer>
         {heroPost && (
           <HeroPost
             title={heroPost.title}
@@ -58,18 +58,18 @@ const Blogs: React.FC<PageProps> = (props) => {
         )}
         <div className="max-w-4xl mx-auto p-6">
           <h1 className="text-4xl font-semibold mb-4">Blogs</h1>
-          {dataPosts.map((post) => (
+          {morePosts.map((post) => (
             <div key={post.slug} className="mb-8">
               <Link href={`/blog/${post.slug}`} className="text-2xl font-bold">
                 {post.title}
               </Link>
-              <div className="text-gray-600">
+              <div>
                 Published on {new Date(post.publishedAt).toDateString()}
               </div>
               {post.thumbnail && post.thumbnail.asset && (
                 <div className="mt-4 relative">
                   <Image
-                    src={post.thumbnail.asset}
+                    src={post.thumbnail.asset.url}
                     alt={post.thumbnail.alt || "Blog Post Thumbnail"}
                     layout="responsive"
                     width={700}
@@ -78,7 +78,7 @@ const Blogs: React.FC<PageProps> = (props) => {
                   />
                 </div>
               )}
-              <p className="mt-2">{post.excerpt}</p>
+              {/* <p className="mt-2">{post}</p> */}
             </div>
           ))}
         </div>
