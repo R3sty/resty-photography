@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: "Resty Iral",
-  description: "Resty Iral's stunning photography prints. High-quality, captivating moments captured to adorn your space",
+  description: "Captivating photography, engaging blogs, and exclusive art. Discover and shop original works by Resty Iral ",
   footer: [
     { name: "About", href: "#" },
     { name: "Terms & Conditions", href: "#" },

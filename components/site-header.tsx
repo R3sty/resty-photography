@@ -49,7 +49,7 @@ const SiteHeader: React.FC = () => {
 
         <div className="hidden lg:flex items-center">
           <div className="flex space-x-10">
-            <Link href="/blog" className="hover:text-blue-800">Blog</Link>
+            <Link href="/post" className="hover:text-blue-800">Blog</Link>
             <Link href="/projects" className="hover:text-blue-800">Web dev</Link>
             <Link href="/store" className="hover:text-blue-800">Store</Link>
             <Link href="/contact" className="hover:text-blue-800">Contact me</Link>
