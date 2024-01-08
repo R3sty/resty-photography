@@ -1,25 +1,32 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Photo from "@/components/photo";
 import PhotoCarousel from "@/components/photo-carousel";
 
-interface PhotoProps {
+type PhotoProps = {
   imgSrc: string;
   alt?: string;
   linkHref: string;
   title: string;
-}
+};
 
-interface PhotoGridProps {
+type PhotoGridProps = {
   photos: PhotoProps[];
-}
+};
 
 const PhotoGrid: React.FC<PhotoGridProps> = ({ photos }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const isMobile = () => {
+    return window.innerWidth < 768;
+  };
+
   const openLightbox = (index: number) => {
+    if (isMobile()) {
+      return;
+    }
     setCurrentSlide(index);
     setIsOpen(true);
   };
@@ -50,11 +57,6 @@ const PhotoGrid: React.FC<PhotoGridProps> = ({ photos }) => {
       )}
     </div>
   );
-}
+};
 
 export default PhotoGrid;
-
-
-
-
-
