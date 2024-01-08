@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 type BlogHeaderProps = {
   title: string;
-  description?: any[];
+  description?: object[];
   level: 1 | 2;
 };
 
@@ -16,7 +16,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ title, description, level }) =>
             {title}
           </h1>
           <h4 className="mt-5 text-center text-lg md:pl-8 md:text-left">
-            <PortableText content={description} />
+          {description && <PortableText content={description} />}
           </h4>
         </header>
       );
