@@ -49,7 +49,7 @@ const SiteHeader: React.FC = () => {
 
         <div className="hidden lg:flex items-center">
           <div className="flex space-x-10">
-            <Link href="/post" className="hover:text-blue-800">Blog</Link>
+          <Link href="/photography" className="hover:text-blue-800">Photography</Link>
             <Link href="/projects" className="hover:text-blue-800">Web dev</Link>
            {/* <Link href="/store" className="hover:text-blue-800">Store</Link> */}
             <Link href="/contact" className="hover:text-blue-800">Contact me</Link>
@@ -70,9 +70,9 @@ const SiteHeader: React.FC = () => {
       {isOpen && (
         <div className="block lg:hidden absolute top-16 left-0 w-full bg-background z-50">
           <div className="flex flex-col space-y-2 mt-2 mx-6">
-            <Link href="/blog" className="hover:text-blue-800">Blog</Link>
+            <Link href="/photography" className="hover:text-blue-800">Photography</Link>
             <Link href="/projects" className="hover:text-blue-800">Web dev</Link>
-            <Link href="/store" className="hover:text-blue-800">Store</Link>
+            {/* <Link href="/store" className="hover:text-blue-800">Store</Link> */}
             <Link href="/contact" className="hover:text-blue-800">Contact me</Link>
           </div>
         </div>
