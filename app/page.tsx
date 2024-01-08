@@ -13,14 +13,7 @@ import { BlogPostType, getBlogPost, getAllBlogPosts } from "@/sanity/lib/queries
 import Image from "next/image";
 import Link from "next/link";
 
-export type PageProps = {
-  preview?: boolean
-  loading?: boolean
-  posts: BlogPostType[]
-
-}
-
-const Blogs: React.FC<PageProps> = (props) => {
+const Blogs: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [dataPosts, setDataPosts] = useState<BlogPostType[]>([]);
 
